@@ -1,6 +1,7 @@
 package service;
 
 import domain.Food;
+import dtos.FoodRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.FoodRepository;
@@ -15,5 +16,10 @@ public class FoodService {
 
     public List<Food> getAll() {
         return foodRepository.findAll();
+    }
+
+    public void save(FoodRequestDto data) {
+        Food food = new Food(data);
+        foodRepository.save(food);
     }
 }

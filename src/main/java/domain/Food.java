@@ -1,5 +1,6 @@
 package domain;
 
+import dtos.FoodRequestDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,6 +12,13 @@ import lombok.*;
 @Getter
 @EqualsAndHashCode(of = "id")
 public class Food {
+
+    public Food(FoodRequestDto data) {
+        this.title = data.title();
+        this.image = data.image();
+        this.price = data.price();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
